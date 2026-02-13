@@ -1,13 +1,13 @@
 {% set provider = "External" %}
 {% set goname = "github.com/terraform-providers/terraform-provider-"+provider.lower() %}
-{% set version = "2.2.0" %}
+{% set version = "2.3.5" %}
 
 {% set name = goname.split('/')[-1] %}
 
 {% set plugin_dir = os.sep.join(["plugins", "registry.terraform.io", "hashicorp", provider.lower(), version]) %}
 {% set x4_plugin = name + '_v' + version %}
 
-{% set sha256 = "337e5e80176b3bd6d700f9a91b7bcef213d03afe44cffcbca74ae9387acb1bd5" %}
+{% set sha256 = "1811163b19f1491ceed9be6a2ee8ca04d5ebdd538e29326e4e2d95f32cf1d44b" %}
 
 package:
   name: {{ name|lower }}
@@ -19,13 +19,13 @@ source:
 
 
 build:
-  number: 2
+  number: 0
   script:
     - go build -v -o {{ target_gobin }}..{{ os.sep }}{{ plugin_dir }}{{ os.sep }}{{ target_goos }}_{{ target_goarch }}{{ os.sep }}{{ x4_plugin }}{{ target_goexe }}
 
 requirements:
   build:
-    - {{ compiler('go') }} 1.13
+    - {{ compiler('go') }}
 
 test:
   requires:
