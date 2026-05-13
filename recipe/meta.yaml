@@ -1,13 +1,13 @@
 {% set provider = "External" %}
 {% set goname = "github.com/terraform-providers/terraform-provider-"+provider.lower() %}
-{% set version = "2.3.5" %}
+{% set version = "2.4.0" %}
 
 {% set name = goname.split('/')[-1] %}
 
 {% set plugin_dir = os.sep.join(["plugins", "registry.terraform.io", "hashicorp", provider.lower(), version]) %}
 {% set x4_plugin = name + '_v' + version %}
 
-{% set sha256 = "1811163b19f1491ceed9be6a2ee8ca04d5ebdd538e29326e4e2d95f32cf1d44b" %}
+{% set sha256 = "be27bd31c4085931fe23d25b1024a3bb3fcb0bc7a23a3d647bd9d9450e21f0bd" %}
 
 package:
   name: {{ name|lower }}
